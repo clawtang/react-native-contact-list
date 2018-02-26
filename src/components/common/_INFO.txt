@@ -1,0 +1,16 @@
+Component styles are additive using an array to append extra style rules.
+
+When creating a reusable component, adding [styles.xxx, props.style]
+allows you to pass extra styling as a prop to the component
+
+
+Naming conventions:
+
+Difficult to decide
+
+Within a component, maybe it makes sense to omit the "type" of component in the
+name, but perhaps with props, the name should be included to make stylesheets
+in parent components easier to use.
+
+
+Try to make it so all the logic is contained in the class that also keeps track of state?
