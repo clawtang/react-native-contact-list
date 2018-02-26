@@ -1,19 +1,15 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import ChatList from './components/ChatList';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers';
+import Router from './Router';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <ChatList />
-      </View>
+      <Provider store={createStore(reducers)}>
+        <Router />
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-  },
-});

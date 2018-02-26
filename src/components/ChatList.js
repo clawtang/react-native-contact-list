@@ -1,37 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { List } from 'react-native-elements';
 import {
   ScrollView,
-  // Text,
-  TouchableOpacity,
-  // StyleSheet,
 } from 'react-native';
-import { List, ListItem } from 'react-native-elements';
-import { users } from '../data/data';
+import ListItem from './ListItem';
 
 
 class ChatList extends Component {
   renderItem() {
-    return users.map(user => (
-      <TouchableOpacity
-        key={user.login.username}
-        onPress={() => console.log(user)}
-      >
+    const { users } = this.props;
+    return users.map(user => {
+      return (
         <ListItem
-          roundAvatar
-          key={user.login.username}
-          avatar={{ uri: user.picture.thumbnail }}
-          title={`${user.name.first.toUpperCase()}`}
-          subtitle={user.email}
           user={user}
+          key={user.login.username}
         />
-      </TouchableOpacity>
-    ));
+      );
+    });
   }
 
   render() {
     return (
       <ScrollView>
-        <List>
+        <List style={{ marginTop: 0 }}>
           {this.renderItem()}
         </List>
       </ScrollView>
@@ -39,6 +31,8 @@ class ChatList extends Component {
   }
 }
 
-ChatList.defaultProps = { ...users };
+const mapStateToProps = state => {
+  return state.users;
+};
 
-export default ChatList;
+export default connect(mapStateToProps)(ChatList);
