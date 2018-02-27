@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import { NavigationActions, withNavigation } from 'react-navigation';
+import { NavigationActions, } from 'react-navigation';
 import {
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
@@ -49,11 +49,12 @@ const loginUserSuccess = (dispatch, user) => {
     payload: user
   });
   // this.props.navigation.dispatch(resetAction);
+  dispatch(resetAction);
 };
 
-// const resetAction = NavigationActions.reset({
-//   index: 0,
-//   actions: [NavigationActions.navigate({
-//     routeName: 'ChatList',
-//   })],
-// });
+const resetAction = NavigationActions.reset({
+  index: 0,
+  actions: [NavigationActions.navigate({
+    routeName: 'ChatList',
+  })],
+});

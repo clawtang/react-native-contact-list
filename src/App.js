@@ -4,7 +4,8 @@ import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './reducers';
-import { RootStack } from './RootStack';
+// import { RootStack } from './navigation/RootStack';
+import AppNavigation from './navigation';
 
 
 export default class App extends React.Component {
@@ -25,7 +26,7 @@ export default class App extends React.Component {
 
     return (
       <Provider store={store}>
-        <RootStack />
+        <AppNavigation />
       </Provider>
     );
   }
