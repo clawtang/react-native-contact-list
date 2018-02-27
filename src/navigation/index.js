@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addNavigationHelpers } from 'react-navigation';
+import {
+  createReduxBoundAddListener,
+  createReactNavigationReduxMiddleware
+} from 'react-navigation-redux-helpers';
 import NavigationStack from './NavigationStack';
+
+export const navigationMiddleware = createReactNavigationReduxMiddleware(
+  'root',
+  state => state.nav,
+);
+
+const addListener = createReduxBoundAddListener('root');
 
 class AppNavigation extends Component {
   render() {
@@ -11,6 +22,7 @@ class AppNavigation extends Component {
         navigation={addNavigationHelpers({
           dispatch,
           state: navigationState,
+          addListener,
         })}
       />
     );

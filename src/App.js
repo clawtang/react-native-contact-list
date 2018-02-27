@@ -5,8 +5,8 @@ import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './reducers';
 // import { RootStack } from './navigation/RootStack';
-import AppNavigation from './navigation';
-
+import AppNavigation, { navigationMiddleware } from './navigation';
+// import navigationMiddleware from './navigation';
 
 export default class App extends React.Component {
   componentWillMount() {
@@ -22,7 +22,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
+    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk, navigationMiddleware));
 
     return (
       <Provider store={store}>
