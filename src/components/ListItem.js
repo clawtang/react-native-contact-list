@@ -4,17 +4,21 @@ import {
   // TouchableOpacity,
 } from 'react-native';
 import { ListItem as ElementsListItem } from 'react-native-elements';
-import { Actions } from 'react-native-router-flux';
+// import { Actions } from 'react-native-router-flux';
 
 
 class ListItem extends Component {
 onItemPress() {
-  // console.log('pressed item:', this.props.user);
-  Actions.userProfile({ user: this.props.user });
+  // console.log(this.props.navigation);
+  // Actions.userProfile({ user: this.props.user });
+  this.props.navigation.navigate('UserProfile', {
+    user: this.props.user,
+  });
 }
 
   render() {
     const user = this.props.user;
+    // console.log(this.props.navigation.state.params);
 
     return (
       <TouchableWithoutFeedback

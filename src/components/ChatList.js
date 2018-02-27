@@ -4,26 +4,54 @@ import { List } from 'react-native-elements';
 import {
   ScrollView,
 } from 'react-native';
+// import { NavigationActions } from 'react-navigation';
 import ListItem from './ListItem';
+import { fetchUsers } from '../actions';
+import { Spinner } from './common';
 
 
 class ChatList extends Component {
+  static navigationOptions = {
+    title: 'ChatList',
+  }
+
+  componentWillMount() {
+    this.props.fetchUsers();
+  }
+
+  // componentWillUpdate() {
+  //   if (this.props.currentUser === null) {
+  //     const resetAction = NavigationActions.reset({
+  //       index: 0,
+  //       actions: [NavigationActions.navigate({
+  //         routeName: 'Login',
+  //       })],
+  //     });
+  //     this.props.navigation.dispatch(resetAction);
+  //   }
+  // }
+
   renderItem() {
     const { users } = this.props;
-    return users.map(user => {
+    console.log('users in readnersug', this.props);
+    return users.results.map(user => {
       return (
         <ListItem
           user={user}
           key={user.login.username}
+          navigation={this.props.navigation}
         />
       );
     });
   }
 
   render() {
+    if (this.props.loadingUsers) {
+      return <Spinner size="large" />;
+    }
     return (
       <ScrollView>
-        <List style={{ marginTop: 0 }}>
+        <List containerStyle={{ marginTop: 0 }}>
           {this.renderItem()}
         </List>
       </ScrollView>
@@ -31,8 +59,9 @@ class ChatList extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state.users;
+const mapStateToProps = ({ users, auth }) => {
+  // console.log('auth', auth);
+  return { ...users, currentUser: auth.user };
 };
 
-export default connect(mapStateToProps)(ChatList);
+export default connect(mapStateToProps, { fetchUsers })(ChatList);

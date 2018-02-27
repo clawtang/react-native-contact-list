@@ -1,15 +1,19 @@
-import data from './UserData.json';
 import {
-  FETCH_USERS
+  FETCH_USERS,
+  USERS_FETCH_SUCCESS,
 } from '../actions/types';
 
-const INITIAL_STATE = { users: data };
+const INITIAL_STATE = {
+  loadingUsers: true
+};
 
 export default (state = INITIAL_STATE, action) => {
-  // console.log('state in reducer', state);
+  // console.log('state', state);
   switch (action.type) {
     case FETCH_USERS:
-      return state;
+      return { ...state, loadingUsers: true };
+    case USERS_FETCH_SUCCESS:
+      return { ...state, users: action.payload, loadingUsers: false };
     default:
       return state;
   }

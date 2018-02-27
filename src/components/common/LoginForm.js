@@ -15,6 +15,9 @@ class LoginForm extends Component {
       buttonText,
       buttonStyle,
       underlineColorAndroid,
+      onEmailChange,
+      onPasswordChange,
+      onButtonPress
     } = this.props;
 
     return (
@@ -24,15 +27,23 @@ class LoginForm extends Component {
           placeholderTextColor={'rgba(0,0,0,0.75)'}
           underlineColorAndroid={underlineColorAndroid}
           style={styles.input}
+          onChangeText={onEmailChange}
         />
         <TextInput
           placeholder={password}
           placeholderTextColor={'rgba(0,0,0,0.75)'}
           underlineColorAndroid={underlineColorAndroid}
           style={styles.input}
+          onChangeText={onPasswordChange}
           secureTextEntry
         />
-        <Button buttonStyle={buttonStyle} textStyle={buttonText}>Login</Button>
+        <Button
+          onPress={onButtonPress}
+          buttonStyle={buttonStyle}
+          textStyle={buttonText}
+        >
+          Login
+        </Button>
       </View>
     );
   }
@@ -40,7 +51,7 @@ class LoginForm extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     padding: 20,
   },
   input: {

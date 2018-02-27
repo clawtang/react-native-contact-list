@@ -8,8 +8,11 @@ import {
 
 const HorizontalScrollPage = (props) => {
   return (
-    <View style={[styles.outer, props.style]}>
-      <Text style={[styles.innerText, props.style]}>Component: HorizontalScrollPage</Text>
+    <View style={[styles.outer, props.containerStyle]}>
+      <Text style={[styles.innerText, props.textStyle]}>
+        {props.text || 'Component: HorizontalScrollPage'}
+      </Text>
+      {props.children}
     </View>
   );
 };
@@ -26,7 +29,7 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
   },
   innerText: {
-    color: '#fff',
+    color: '#444',
     fontSize: 23,
     fontWeight: 'bold',
   },

@@ -1,7 +1,7 @@
-// import { Actions } from 'react-native-router-flux';
 import {
   SELECT_USER,
-  FETCH_USERS
+  FETCH_USERS,
+  USERS_FETCH_SUCCESS,
 } from './types';
 
 export const selectUser = (username) => {
@@ -12,7 +12,16 @@ export const selectUser = (username) => {
 };
 
 export const fetchUsers = () => {
-  return {
-    type: FETCH_USERS
+  return (dispatch) => {
+    dispatch({ type: FETCH_USERS });
+
+    const url = 'https://randomuser.me/api/?results=50';
+
+    fetch(url)
+      .then(res => res.json())
+      .then(users => {
+        dispatch({ type: USERS_FETCH_SUCCESS, payload: users });
+      })
+      .catch(err => console.log(err));
   };
 };

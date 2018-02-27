@@ -12,15 +12,22 @@ import {
 
 
 class UserProfile extends Component {
+  static navigationOptions = {
+    title: 'UserProfile',
+  }
 
   capitalize(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
   render() {
-    const { picture, name, login, email } = this.props.user;
+    console.log('params', this.props.navigation.state.params);
+    // const { params } = this.props.navigation.state;
+    const {
+      picture, name, login, email
+    } = this.props.navigation.state.params.user;
 
-    console.log(this.props.user);
+    // console.log(this.props.user);
     return (
       <Card>
         <Avatar
