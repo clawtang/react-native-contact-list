@@ -25,9 +25,9 @@ const navigator = StackNavigator(
     initialRouteName: 'Home',
     navigationOptions: {
       headerStyle: {
-        // backgroundColor: '#f4511e'
+        backgroundColor: '#555'
       },
-      // headerTintColor: '#fff',
+      headerTintColor: '#eaeaea',
       headerTitleStyle: {
         fontWeight: 'bold'
       }

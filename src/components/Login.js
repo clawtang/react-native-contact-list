@@ -48,18 +48,24 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <KeyboardAvoidingView
         behavior="padding"
         keyboardVerticalOffset={100}
         style={styles.container}
       >
-        <Text style={styles.text}>Enter your username and password to log in</Text>
+        <Text
+          style={styles.text}
+        >{this.props.navigation.state.params.message}</Text>
+
         {this.renderError()}
+
         <LoginForm
           email="email@example.com"
           onEmailChange={this.onEmailChange.bind(this)}
           password="password"
+          buttonText={this.props.navigation.state.params.message}
           onPasswordChange={this.onPasswordChange.bind(this)}
           onButtonPress={this.onButtonPress.bind(this)}
         />

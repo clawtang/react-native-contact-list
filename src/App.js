@@ -21,6 +21,12 @@ export default class App extends React.Component {
     firebase.initializeApp(config);
   }
 
+  // componentDidMount() {
+  //   Font.loadAsync({
+  //     'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  //   });
+  // }
+
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk, navigationMiddleware));
 

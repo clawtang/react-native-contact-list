@@ -9,6 +9,7 @@ const HorizontalScrollContainer = (props) => {
     <ScrollView
       horizontal
       pagingEnabled={props.pagingEnabled}
+      showsHorizontalScrollIndicator={props.showsHorizontalScrollIndicator}
       style={[styles.container, props.style]}
     >
       {props.children}

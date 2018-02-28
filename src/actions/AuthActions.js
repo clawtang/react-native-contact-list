@@ -33,7 +33,9 @@ export const loginUser = ({ email, password }) => {
         loginUserSuccess(dispatch, user);
       })
       .catch(() => {
-        loginUserFail(dispatch);
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then(user => loginUserSuccess(dispatch, user))
+          .catch(() => loginUserFail(dispatch));
       });
   };
 };
@@ -51,6 +53,7 @@ const loginUserSuccess = (dispatch, user) => {
   // this.props.navigation.dispatch(resetAction);
   dispatch(resetAction);
 };
+
 
 const resetAction = NavigationActions.reset({
   index: 0,

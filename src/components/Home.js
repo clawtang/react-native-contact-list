@@ -1,76 +1,93 @@
 import React, { Component } from 'react';
 import {
-  View,
+  // View,
   Text,
   StyleSheet,
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+// import PageControl from 'react-native-page-control';
+import Swiper from 'react-native-swiper';
+
 import {
-  HorizontalScrollContainer,
+  // HorizontalScrollContainer,
   HorizontalScrollPage,
   Button,
 } from './common';
 
-const resetAction = NavigationActions.reset({
+const resetAction = (message) => NavigationActions.reset({
   index: 0,
   actions: [NavigationActions.navigate({
     routeName: 'Login',
     params: {
       username: 'username',
       password: 'password',
+      message
     },
   })],
 });
-
 
 class Home extends Component {
   static navigationOptions = {
     title: 'Home'
   }
 
-  onButtonPress() {
-    this.props.navigation.dispatch(resetAction);
+  onButtonPress(message) {
+    this.props.navigation.dispatch(resetAction(message));
+  }
+
+  onItemTap() {
+    console.log('pressed');
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <HorizontalScrollContainer pagingEnabled >
-          <HorizontalScrollPage
-            text="Chat List"
-            textStyle={styles.horizontalScrollPageText}
-            containerStyle={styles.horizontalScrollPageContainer}
-          >
-            <Button
-              containerStyle={styles.buttonContainer}
-              textStyle={styles.buttonText}
-              onPress={() => this.onButtonPress()}
-            >
-              Login
-            </Button>
-          </HorizontalScrollPage>
-          <HorizontalScrollPage
-            text="Manage all your social media contacts"
-          >
-            <Text>Placeholder</Text>
-          </HorizontalScrollPage>
-          <HorizontalScrollPage
-            text="Save your contacts for later"
-          >
-            <Text>Placeholder</Text>
-          </HorizontalScrollPage>
-          <HorizontalScrollPage
-            text="Sign up to get started"
-          >
-            <Button
-              containerStyle={styles.buttonContainer}
-              textStyle={styles.buttonText}
-            >
-              Sign Up
-            </Button>
-          </HorizontalScrollPage>
-        </HorizontalScrollContainer>
-      </View>
+      <Swiper
+        style={styles.wrapper}
+        activeDotStyle={{ backgroundColor: '#eaeaea' }}
+        loop={false}
+        bounces
+      >
+
+        <HorizontalScrollPage
+          text="Chat List"
+          textStyle={[styles.horizontalScrollPageText, { fontSize: 50 }]}
+          containerStyle={styles.horizontalScrollPageContainer}
+        >
+          <Button
+            containerStyle={styles.buttonContainer}
+            textStyle={styles.buttonText}
+            onPress={() => this.onButtonPress('Log In')}
+          >Log In</Button>
+        </HorizontalScrollPage>
+
+        <HorizontalScrollPage
+          text="Manage all your social media contacts"
+          textStyle={styles.horizontalScrollPageText}
+          containerStyle={styles.horizontalScrollPageContainer}
+        >
+          <Text>Placeholder</Text>
+        </HorizontalScrollPage>
+
+        <HorizontalScrollPage
+          text="Save your contacts for later"
+          textStyle={styles.horizontalScrollPageText}
+          containerStyle={styles.horizontalScrollPageContainer}
+        >
+          <Text>Placeholder</Text>
+        </HorizontalScrollPage>
+
+        <HorizontalScrollPage
+          text="Sign up to get started"
+          textStyle={styles.horizontalScrollPageText}
+          containerStyle={styles.horizontalScrollPageContainer}
+        >
+          <Button
+            containerStyle={styles.buttonContainer}
+            textStyle={styles.buttonText}
+            onPress={() => this.onButtonPress('Sign Up')}
+          >Sign Up</Button>
+        </HorizontalScrollPage>
+      </Swiper>
     );
   }
 }
@@ -86,18 +103,46 @@ const styles = StyleSheet.create({
     backgroundColor: '#777'
   },
   horizontalScrollPageText: {
-    color: '#292929',
-    fontSize: 50,
+    color: '#eaeaea',
+    fontSize: 30,
   },
   buttonContainer: {
     borderColor: '#292929',
     alignSelf: 'center',
-    // paddingHorizontal: 80
-    width: '80%',
+    width: '90%',
+    backgroundColor: '#555',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // height: 60,
   },
   buttonText: {
-    color: '#292929',
-  }
+    color: '#eaeaea',
+  },
+  // wrapper: {
+  // },
+  // slide1: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   backgroundColor: '#9DD6EB',
+  // },
+  // slide2: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   backgroundColor: '#97CAE5',
+  // },
+  // slide3: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   backgroundColor: '#92BBD9',
+  // },
+  // text: {
+  //   color: '#fff',
+  //   fontSize: 30,
+  //   fontWeight: 'bold',
+  // }
 });
 
 export default Home;

@@ -12,12 +12,13 @@ class LoginForm extends Component {
       username = '',
       email = '',
       password,
-      buttonText,
       buttonStyle,
+      buttonTextStyle,
       underlineColorAndroid,
       onEmailChange,
       onPasswordChange,
-      onButtonPress
+      onButtonPress,
+      buttonText,
     } = this.props;
 
     return (
@@ -28,6 +29,9 @@ class LoginForm extends Component {
           underlineColorAndroid={underlineColorAndroid}
           style={styles.input}
           onChangeText={onEmailChange}
+          autoCorrect={false}
+          autoCapitalize="none"
+          keyboardType="email-address"
         />
         <TextInput
           placeholder={password}
@@ -35,14 +39,16 @@ class LoginForm extends Component {
           underlineColorAndroid={underlineColorAndroid}
           style={styles.input}
           onChangeText={onPasswordChange}
+          autoCorrect={false}
+          autoCapitalize="none"
           secureTextEntry
         />
         <Button
           onPress={onButtonPress}
           buttonStyle={buttonStyle}
-          textStyle={buttonText}
+          textStyle={buttonTextStyle}
         >
-          Login
+          {buttonText}
         </Button>
       </View>
     );
