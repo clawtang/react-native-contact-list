@@ -1,12 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import ReduxThunk from 'redux-thunk';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+// import { createStore, applyMiddleware } from 'redux';
+// import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
-import reducers from './reducers';
+// import reducers from './reducers';
 // import { RootStack } from './navigation/RootStack';
-import AppNavigation, { navigationMiddleware } from './navigation';
+import AppNavigation from './navigation';
 // import navigationMiddleware from './navigation';
+import { persistor, store } from './store';
+import { Spinner } from './components/common';
 
 export default class App extends React.Component {
   componentWillMount() {
@@ -28,11 +31,11 @@ export default class App extends React.Component {
   // }
 
   render() {
-    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk, navigationMiddleware));
-
     return (
       <Provider store={store}>
-        <AppNavigation />
+        <PersistGate loading={<Spinner />} persistor={persistor}>
+          <AppNavigation />
+        </PersistGate>
       </Provider>
     );
   }

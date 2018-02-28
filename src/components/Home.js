@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
+import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 // import PageControl from 'react-native-page-control';
 import Swiper from 'react-native-swiper';
@@ -53,6 +54,7 @@ class Home extends Component {
           textStyle={[styles.horizontalScrollPageText, { fontSize: 50 }]}
           containerStyle={styles.horizontalScrollPageContainer}
         >
+          <Text>Run {this.props.timesRun} Times</Text>
           <Button
             containerStyle={styles.buttonContainer}
             textStyle={styles.buttonText}
@@ -118,31 +120,12 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#eaeaea',
   },
-  // wrapper: {
-  // },
-  // slide1: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   backgroundColor: '#9DD6EB',
-  // },
-  // slide2: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   backgroundColor: '#97CAE5',
-  // },
-  // slide3: {
-  //   flex: 1,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   backgroundColor: '#92BBD9',
-  // },
-  // text: {
-  //   color: '#fff',
-  //   fontSize: 30,
-  //   fontWeight: 'bold',
-  // }
 });
 
-export default Home;
+const mapStateToProps = ({ appStats }) => {
+  const { timesRun } = appStats;
+
+  return { timesRun };
+};
+
+export default connect(mapStateToProps)(Home);
