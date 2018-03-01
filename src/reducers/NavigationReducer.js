@@ -3,6 +3,7 @@ import AppNavigator from '../navigation/NavigationStack';
 import {
   LOGIN_USER_SUCCESS,
   RUN_APP,
+  GO_HOME,
   GO_LOGIN,
 } from '../actions/types';
 
@@ -28,6 +29,17 @@ export default (state = INITIAL_STATE, action) => {
       );
       break;
     case RUN_APP:
+      newState = AppNavigator.router.getStateForAction(
+        NavigationActions.reset({
+          index: 0,
+          actions: [
+            NavigationActions.navigate({ routeName: 'AppEntry' }),
+          ],
+        }),
+        state
+      );
+      break;
+    case GO_HOME:
       newState = AppNavigator.router.getStateForAction(
         NavigationActions.reset({
           index: 0,

@@ -1,5 +1,6 @@
 // import { NavigationActions } from 'react-navigation';
 import {
+  GO_HOME,
   GO_LOGIN,
 } from './types';
 //
@@ -12,6 +13,11 @@ import {
 //     }
 //   })],
 // });
+export const navigateToHome = () => {
+  return {
+    type: GO_HOME
+  };
+};
 
 export const navigateToLogin = (message) => {
   return {

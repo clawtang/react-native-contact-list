@@ -12,5 +12,6 @@ export const APP_OPENED = 'app_opened';
 export const RESET_COUNT = 'reset_count';
 
 export const RUN_APP = 'run_app';
+export const GO_HOME = 'go_home';
 export const GO_LOGIN = 'go_login';
 export const RESET_USER = 'reset_user';
