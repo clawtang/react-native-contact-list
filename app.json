@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "projtenchat",
+    "name": "Chat List",
     "description": "This project is really great.",
     "slug": "projtenchat",
     "privacy": "public",
@@ -16,6 +16,9 @@
     },
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.clawtang.chatlist"
     }
   }
 }

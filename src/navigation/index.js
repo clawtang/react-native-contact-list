@@ -6,6 +6,7 @@ import {
   createReactNavigationReduxMiddleware
 } from 'react-navigation-redux-helpers';
 import NavigationStack from './NavigationStack';
+// import { appOpened } from '../actions';
 
 export const navigationMiddleware = createReactNavigationReduxMiddleware(
   'root',
@@ -13,6 +14,10 @@ export const navigationMiddleware = createReactNavigationReduxMiddleware(
 );
 
 const addListener = createReduxBoundAddListener('root');
+
+// adding an appOpened call here and mapping it to dispatch
+// led to dispatch being undefined everywhere else in
+// the app
 
 class AppNavigation extends Component {
   render() {

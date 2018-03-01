@@ -1,4 +1,3 @@
-// import { createStore } from 'redux';
 import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import ReduxThunk from 'redux-thunk';
@@ -12,7 +11,7 @@ const persistConfig = {
   key: 'root',
   storage,
   stateReconciler: autoMergeLevel2,
-  blacklist: ['nav']
+  blacklist: ['nav', 'auth']
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

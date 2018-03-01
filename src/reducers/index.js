@@ -4,6 +4,7 @@ import SelectedUserReducer from './SelectedUserReducer';
 import AuthReducer from './AuthReducer';
 import NavigationReducer from './NavigationReducer';
 import AppStatsReducer from './AppStatsReducer';
+import DevReducer from './DevReducer';
 
 export default combineReducers({
   users: UserReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   auth: AuthReducer,
   nav: NavigationReducer,
   appStats: AppStatsReducer,
+  dev: DevReducer,
 });

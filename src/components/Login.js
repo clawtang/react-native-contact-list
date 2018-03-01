@@ -6,18 +6,18 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-// import { NavigationActions } from 'react-navigation';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import {
+  emailChanged,
+  passwordChanged,
+  loginUser,
+  // navigateToChatList,
+} from '../actions';
 import { LoginForm } from './common';
 
-// const resetAction = NavigationActions.reset({
-//   index: 0,
-//   actions: [NavigationActions.navigate({ routeName: 'ChatList' })],
-// });
 
 class Login extends Component {
   static navigationOptions = {
-    title: 'Login'
+    title: 'Login',
   }
 
   onEmailChange(text) {
@@ -32,7 +32,7 @@ class Login extends Component {
     const { email, password } = this.props;
 
     this.props.loginUser({ email, password });
-    // this.props.navigation.dispatch(resetAction);
+    // this.props.navigateToChatList();
   }
 
   renderError() {
@@ -48,7 +48,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log('checking props', this.props);
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -101,5 +101,8 @@ const mapStateToProps = ({ auth }) => {
 };
 
 export default connect(mapStateToProps, {
-  emailChanged, passwordChanged, loginUser
+  emailChanged,
+  passwordChanged,
+  loginUser,
+  // navigateToChatList,
 })(Login);

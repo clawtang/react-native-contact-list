@@ -1,5 +1,4 @@
 import {
-  APP_OPENED,
   RESET_COUNT,
 } from '../actions/types';
 
@@ -8,9 +7,8 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
+  console.log('dev reducer', state);
   switch (action.type) {
-    case APP_OPENED:
-      return { ...state, timesRun: state.timesRun + 1 };
     case RESET_COUNT:
       return { ...state, timesRun: 1 };
     default:

@@ -1,31 +1,19 @@
 import React, { Component } from 'react';
 import {
-  // View,
   Text,
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
-// import PageControl from 'react-native-page-control';
 import Swiper from 'react-native-swiper';
-
+// import { NavigationActions } from 'react-navigation';
 import {
-  // HorizontalScrollContainer,
   HorizontalScrollPage,
   Button,
 } from './common';
+import {
+  navigateToLogin,
+} from '../actions';
 
-const resetAction = (message) => NavigationActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({
-    routeName: 'Login',
-    params: {
-      username: 'username',
-      password: 'password',
-      message
-    },
-  })],
-});
 
 class Home extends Component {
   static navigationOptions = {
@@ -33,7 +21,7 @@ class Home extends Component {
   }
 
   onButtonPress(message) {
-    this.props.navigation.dispatch(resetAction(message));
+    this.props.navigateToLogin(message);
   }
 
   onItemTap() {
@@ -54,11 +42,10 @@ class Home extends Component {
           textStyle={[styles.horizontalScrollPageText, { fontSize: 50 }]}
           containerStyle={styles.horizontalScrollPageContainer}
         >
-          <Text>Run {this.props.timesRun} Times</Text>
           <Button
             containerStyle={styles.buttonContainer}
             textStyle={styles.buttonText}
-            onPress={() => this.onButtonPress('Log In')}
+            onPress={() => this.onButtonPress({ message: 'Log In' })}
           >Log In</Button>
         </HorizontalScrollPage>
 
@@ -86,7 +73,7 @@ class Home extends Component {
           <Button
             containerStyle={styles.buttonContainer}
             textStyle={styles.buttonText}
-            onPress={() => this.onButtonPress('Sign Up')}
+            onPress={() => this.onButtonPress({ message: 'Sign Up' })}
           >Sign Up</Button>
         </HorizontalScrollPage>
       </Swiper>
@@ -122,10 +109,5 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({ appStats }) => {
-  const { timesRun } = appStats;
 
-  return { timesRun };
-};
-
-export default connect(mapStateToProps)(Home);
+export default connect(null, { navigateToLogin })(Home);

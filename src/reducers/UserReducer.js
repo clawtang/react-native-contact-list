@@ -1,6 +1,7 @@
 import {
   FETCH_USERS,
   USERS_FETCH_SUCCESS,
+  RESET_USER,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -14,6 +15,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, loadingUsers: true };
     case USERS_FETCH_SUCCESS:
       return { ...state, users: action.payload, loadingUsers: false };
+    case RESET_USER:
+      return INITIAL_STATE;
     default:
       return state;
   }

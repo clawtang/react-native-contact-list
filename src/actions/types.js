@@ -9,3 +9,8 @@ export const LOGIN_USER_SUCCESS = 'login_user_success';
 export const LOGIN_USER_FAIL = 'login_user_fail';
 
 export const APP_OPENED = 'app_opened';
+export const RESET_COUNT = 'reset_count';
+
+export const RUN_APP = 'run_app';
+export const GO_LOGIN = 'go_login';
+export const RESET_USER = 'reset_user';
