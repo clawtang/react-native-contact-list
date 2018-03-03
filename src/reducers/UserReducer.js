@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  // console.log('state', state);
+  // console.log('userReducer', state);
   switch (action.type) {
     case FETCH_USERS:
       return { ...state, loadingUsers: true };

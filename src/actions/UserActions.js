@@ -1,13 +1,22 @@
+import firebase from 'firebase';
 import {
-  SELECT_USER,
+  USER_UPDATE,
+  USER_CREATE,
   FETCH_USERS,
   USERS_FETCH_SUCCESS,
 } from './types';
 
-export const selectUser = (username) => {
+// export const selectUser = (username) => {
+//   return {
+//     type: SELECT_USER,
+//     payload: username
+//   };
+// };
+
+export const userUpdate = ({ prop, value }) => {
   return {
-    type: SELECT_USER,
-    payload: username
+    type: USER_UPDATE,
+    payload: { prop, value }
   };
 };
 
@@ -23,5 +32,17 @@ export const fetchUsers = () => {
         dispatch({ type: USERS_FETCH_SUCCESS, payload: users });
       })
       .catch(err => console.log(err));
+  };
+};
+
+export const userCreate = ({ firstName, lastName, username, email }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/users`)
+    .push({ firstName, lastName, username, email })
+    .then(() => {
+      dispatch({ type: USER_CREATE });
+    });
   };
 };

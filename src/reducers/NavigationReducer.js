@@ -4,6 +4,8 @@ import {
   LOGIN_USER_SUCCESS,
   RUN_APP,
   GO_HOME,
+  GO_USER_CREATE,
+  // GO_CHAT,
   GO_LOGIN,
 } from '../actions/types';
 
@@ -14,6 +16,7 @@ const INITIAL_STATE = AppNavigator.router.getStateForAction(
 );
 
 export default (state = INITIAL_STATE, action) => {
+  console.log('navReducer', state);
   let newState;
 
   switch (action.type) {
@@ -61,6 +64,13 @@ export default (state = INITIAL_STATE, action) => {
             })
           ],
         }),
+        state
+      );
+      break;
+    case GO_USER_CREATE:
+      console.log('go user create called');
+      newState = AppNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'UserCreate' }),
         state
       );
       break;

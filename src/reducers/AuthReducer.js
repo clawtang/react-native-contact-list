@@ -3,7 +3,8 @@ import {
   PASSWORD_CHANGED,
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
-  LOGIN_USER_FAIL
+  LOGIN_USER_FAIL,
+  RESET_AUTH,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -15,7 +16,7 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  // console.log(state);
+  // console.log('authReducer', state);
   switch (action.type) {
     case EMAIL_CHANGED:
       return { ...state, email: action.payload };
@@ -27,6 +28,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, ...INITIAL_STATE, user: action.payload };
     case LOGIN_USER_FAIL:
       return { ...state, error: 'Incorrect email and/or password.', loading: false };
+    case RESET_AUTH:
+      return INITIAL_STATE;
     default:
       return state;
   }

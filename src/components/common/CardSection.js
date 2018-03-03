@@ -20,6 +20,7 @@ const styles = {
     flexDirection: 'row',
     borderColor: '#ddd',
     position: 'relative',
+    // alignItems: 'flex-end',
     // flex: 1
   }
 };

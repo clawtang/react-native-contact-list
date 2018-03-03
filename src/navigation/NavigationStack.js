@@ -6,6 +6,7 @@ import Home from '../components/Home';
 import Login from '../components/Login';
 import ChatList from '../components/ChatList';
 import UserProfile from '../components/UserProfile';
+import UserCreate from '../components/UserCreate';
 
 const navigator = StackNavigator(
   // put all the different screens here
@@ -16,6 +17,7 @@ const navigator = StackNavigator(
     Login: { screen: Login },
     ChatList: { screen: ChatList },
     UserProfile: { screen: UserProfile },
+    UserCreate: { screen: UserCreate },
   },
   {
     initialRouteName: 'Home',

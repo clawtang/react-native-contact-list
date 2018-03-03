@@ -8,6 +8,7 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
+  // console.log('appStatsReducer', state);
   switch (action.type) {
     case APP_OPENED:
       return { ...state, timesRun: state.timesRun + 1 };

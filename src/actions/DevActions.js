@@ -2,6 +2,10 @@ import {
   RESET_COUNT,
   RUN_APP,
   RESET_USER,
+  RESET_AUTH,
+  // GO_CHAT,
+  GO_USER_CREATE,
+  LOGIN_USER_SUCCESS,
 } from './types';
 
 
@@ -20,5 +24,23 @@ export const runApp = () => {
 export const resetUser = () => {
   return {
     type: RESET_USER
+  };
+};
+
+export const resetAuth = () => {
+  return {
+    type: RESET_AUTH
+  };
+};
+
+export const skipToChatList = () => {
+  return {
+    type: LOGIN_USER_SUCCESS
+  };
+};
+
+export const skipToUserCreate = () => {
+  return {
+    type: GO_USER_CREATE,
   };
 };

@@ -1,12 +1,16 @@
 import React from 'react';
 import {
-  View,
+  KeyboardAvoidingView,
 } from 'react-native';
 
 const Card = (props) => (
-  <View style={styles.containerStyle}>
+  <KeyboardAvoidingView
+    behavior="padding"
+    keyboardVerticalOffset={100}
+    style={styles.containerStyle}
+  >
     {props.children}
-  </View>
+  </KeyboardAvoidingView>
 );
 
 export { Card };
@@ -22,9 +26,11 @@ const styles = {
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 1,
-    marginLeft: 5,
-    marginRight: 5,
+    margin: 10,
+    // marginLeft: 10,
+    // marginRight: 10,
     // marginTop: 70,
+    // marginTop: 10,
     // flex: 1,
   }
 };
