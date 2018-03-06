@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
-import {
-  View,
-  // Text,
-} from 'react-native';
 import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import {
-  // Card,
-} from 'react-native-elements';
 import { Input, CardSection } from './common';
 import { userUpdate } from '../actions';
 
@@ -20,32 +13,32 @@ class UserForm extends Component {
           <Input
             label="First Name"
             placeholder="Jane"
-            // onChangeText={value => this.props.employeeUpdate({ prop: 'firstName', value })}
-            // value={this.props.firstName}
+            onChangeText={value => this.props.userUpdate({ prop: 'firstName', value })}
+            value={this.props.firstName}
           />
         </CardSection>
         <CardSection>
           <Input
             label="Last Name"
             placeholder="Doe"
-            // onChangeText={value => this.props.employeeUpdate({ prop: 'firstName', value })}
-            // value={this.props.firstName}
+            onChangeText={value => this.props.userUpdate({ prop: 'lastName', value })}
+            value={this.props.lastName}
           />
         </CardSection>
         <CardSection>
           <Input
             label="Username"
             placeholder="username"
-            // onChangeText={value => this.props.employeeUpdate({ prop: 'firstName', value })}
-            // value={this.props.firstName}
+            onChangeText={value => this.props.userUpdate({ prop: 'username', value })}
+            value={this.props.username}
           />
         </CardSection>
         <CardSection>
           <Input
             label="Email"
             placeholder="email@example.com"
-            // onChangeText={value => this.props.employeeUpdate({ prop: 'firstName', value })}
-            // value={this.props.firstName}
+            onChangeText={value => this.props.userUpdate({ prop: 'email', value })}
+            value={this.props.email}
           />
         </CardSection>
       </KeyboardAwareScrollView>
@@ -54,10 +47,9 @@ class UserForm extends Component {
 }
 
 const mapStateToProps = state => {
-  // const { firstName } = state.userForm;
-  //
-  // return { firstName };
-  return {};
+  const { firstName, lastName, username, email } = state.userForm;
+
+  return { firstName, lastName, username, email };
 };
 
 export default connect(mapStateToProps, {

@@ -48,7 +48,7 @@ class Login extends Component {
   }
 
   render() {
-    console.log('checking props', this.props);
+    // console.log('checking props', this.props);
     return (
       <KeyboardAvoidingView
         behavior="padding"

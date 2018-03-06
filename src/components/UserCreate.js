@@ -36,10 +36,10 @@ class UserCreate extends Component {
 }
 
 const mapStateToProps = state => {
-  // const { firstName, lastName, username, email } = state.userForm;
+  const { firstName, lastName, username, email } = state.userForm;
 
-  // return { firstName, lastName, username, email };
-  return {};
+  return { firstName, lastName, username, email };
+  // return {};
 };
 
 export default connect(mapStateToProps, {

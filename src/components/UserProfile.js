@@ -6,9 +6,15 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import {
-  Avatar,
-  Card,
+  // Avatar,
+  // Card,
 } from 'react-native-elements';
+import {
+  Gravatar,
+  // GravatarApi
+} from 'react-native-gravatar';
+import { Card, Button } from './common';
+import { navigateToUserEdit } from '../actions';
 
 
 class UserProfile extends Component {
@@ -20,26 +26,45 @@ class UserProfile extends Component {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
-  render() {
-    console.log('params', this.props.navigation.state.params);
-    // const { params } = this.props.navigation.state;
-    const {
-      picture, name, login, email
-    } = this.props.navigation.state.params.user;
+  navigateToUserEdit(user) {
+    console.log('pressed');
+    this.props.navigateToUserEdit(user);
+  }
 
-    // console.log(this.props.user);
+  render() {
+    const {
+      // picture,
+      firstName,
+      lastName,
+      username,
+      email,
+      uid,
+    } = this.props.navigation.state.params;
+
     return (
       <Card>
-        <Avatar
-          xlarge
-          rounded
-          source={{ uri: picture.large }}
-          containerStyle={{ alignSelf: 'center' }}
+        <Gravatar
+          options={{
+            email,
+            parameters: { size: '200', d: 'mm' },
+            secure: true
+          }}
         />
-        <Text>first name: {this.capitalize(name.first)}</Text>
-        <Text>last name: {this.capitalize(name.last)}</Text>
-        <Text>username: {login.username}</Text>
+        <Text>first name: {this.capitalize(firstName)}</Text>
+        <Text>last name: {this.capitalize(lastName)}</Text>
+        <Text>username: {username}</Text>
         <Text>email: {email}</Text>
+        <Button
+          onPress={() => this.navigateToUserEdit({
+            user: {
+              firstName,
+              lastName,
+              username,
+              email,
+              uid,
+            }
+          })}
+        >Edit Details</Button>
       </Card>
     );
   }
@@ -51,4 +76,4 @@ class UserProfile extends Component {
 //   },
 // });
 
-export default connect(null)(UserProfile);
+export default connect(null, { navigateToUserEdit })(UserProfile);

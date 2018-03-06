@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { List } from 'react-native-elements';
@@ -8,15 +9,13 @@ import {
 import ListItem from './ListItem';
 import {
   fetchUsers,
-  navigateToUserCreate
+  navigateToUserCreate,
 } from '../actions';
 import { Spinner } from './common';
 
 
 class ChatList extends Component {
   static navigationOptions = ({ navigation }) => {
-    // const params = navigation.state.params || {};
-
     return {
       title: 'ChatList',
       headerRight: (
@@ -33,16 +32,16 @@ class ChatList extends Component {
   componentWillMount() {
     this.props.navigation.setParams({ navigateToUserCreate });
     this.props.fetchUsers();
-    console.log('props', this.props);
   }
 
   renderItem() {
     const { users } = this.props;
-    return users.results.map(user => {
+
+    return users.map(user => {
       return (
         <ListItem
           user={user}
-          key={user.login.username}
+          key={user.username + user.firstName}
           navigation={this.props.navigation}
         />
       );
@@ -63,10 +62,14 @@ class ChatList extends Component {
   }
 }
 
-const mapStateToProps = ({ users, auth }) => {
-  return { ...users, currentUser: auth.user };
+const mapStateToProps = (state) => {
+  const users = _.map(state.users.users, (val, uid) => {
+    return { ...val, uid };
+  });
+
+  return { users };
 };
 
 export default connect(mapStateToProps, {
-  fetchUsers, navigateToUserCreate
+  fetchUsers, navigateToUserCreate,
 })(ChatList);

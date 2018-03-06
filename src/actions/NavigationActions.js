@@ -1,19 +1,12 @@
-// import { NavigationActions } from 'react-navigation';
 import {
   GO_HOME,
   GO_USER_CREATE,
+  GO_USER_PROFILE,
+  GO_USER_EDIT,
   GO_LOGIN,
 } from './types';
-//
-// const login = (message) => NavigationActions.reset({
-//   index: 0,
-//   actions: [NavigationActions.navigate({
-//     routeName: 'Login',
-//     params: {
-//       message
-//     }
-//   })],
-// });
+
+
 export const navigateToHome = () => {
   return {
     type: GO_HOME
@@ -21,9 +14,16 @@ export const navigateToHome = () => {
 };
 
 export const navigateToUserCreate = () => {
-  // console.log('ajhaahjfe');
   return {
     type: GO_USER_CREATE
+  };
+};
+
+export const navigateToUserEdit = (user) => {
+  console.log('action nav to user edit');
+  return {
+    type: GO_USER_EDIT,
+    payload: user
   };
 };
 
@@ -32,45 +32,11 @@ export const navigateToLogin = (message) => {
     type: GO_LOGIN,
     payload: message,
   };
-  // return (dispatch) => {
-  //   try {
-  //     dispatch(login(message));
-  //   } catch (err) {
-  //     throw new Error(err);
-  //   }
-  // };
 };
-//
-// const home = NavigationActions.reset({
-//   index: 0,
-//   actions: [NavigationActions.navigate({
-//     routeName: 'Home',
-//   })],
-// });
-//
-// export const runApp = () => {
-//   return (dispatch) => {
-//     try {
-//       dispatch(home);
-//     } catch (err) {
-//       throw new Error(err);
-//     }
-//   };
-// };
-//
-// const chatList = NavigationActions.reset({
-//   index: 0,
-//   actions: [NavigationActions.navigate({
-//     routeName: 'ChatList',
-//   })],
-// });
-//
-// export const navigateToChatList = () => {
-//   return (dispatch) => {
-//     try {
-//       dispatch(chatList);
-//     } catch (err) {
-//       throw new Error(err);
-//     }
-//   };
-// };
+
+export const navigateToUserProfile = (user) => {
+  return {
+    type: GO_USER_PROFILE,
+    payload: user
+  };
+};

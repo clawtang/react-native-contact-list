@@ -5,8 +5,11 @@ import {
   RUN_APP,
   GO_HOME,
   GO_USER_CREATE,
+  GO_USER_EDIT,
   // GO_CHAT,
   GO_LOGIN,
+  GO_USER_PROFILE,
+  USER_SAVE_SUCCESS,
 } from '../actions/types';
 
 
@@ -16,11 +19,11 @@ const INITIAL_STATE = AppNavigator.router.getStateForAction(
 );
 
 export default (state = INITIAL_STATE, action) => {
-  console.log('navReducer', state);
+  // console.log('navReducer', state);
   let newState;
 
   switch (action.type) {
-    case LOGIN_USER_SUCCESS:
+    case LOGIN_USER_SUCCESS: // GO_CHAT_LIST
       newState = AppNavigator.router.getStateForAction(
         NavigationActions.reset({
           index: 0,
@@ -71,6 +74,37 @@ export default (state = INITIAL_STATE, action) => {
       console.log('go user create called');
       newState = AppNavigator.router.getStateForAction(
         NavigationActions.navigate({ routeName: 'UserCreate' }),
+        state
+      );
+      break;
+    case USER_SAVE_SUCCESS:
+      newState = AppNavigator.router.getStateForAction(
+        NavigationActions.reset({
+          index: 0,
+          actions: [
+            NavigationActions.navigate({
+              routeName: 'ChatList',
+            })
+          ],
+        }),
+        state
+      );
+      break;
+    case GO_USER_PROFILE:
+      newState = AppNavigator.router.getStateForAction(
+        NavigationActions.navigate({
+          routeName: 'UserProfile',
+          params: action.payload
+        }),
+        state
+      );
+      break;
+    case GO_USER_EDIT:
+      newState = AppNavigator.router.getStateForAction(
+        NavigationActions.navigate({
+          routeName: 'UserEdit',
+          params: action.payload
+        }),
         state
       );
       break;

@@ -3,6 +3,7 @@ import {
   RUN_APP,
   RESET_USER,
   RESET_AUTH,
+  RESET_USER_FORM,
   // GO_CHAT,
   GO_USER_CREATE,
   LOGIN_USER_SUCCESS,
@@ -30,6 +31,12 @@ export const resetUser = () => {
 export const resetAuth = () => {
   return {
     type: RESET_AUTH
+  };
+};
+
+export const resetUserForm = () => {
+  return {
+    type: RESET_USER_FORM
   };
 };
 

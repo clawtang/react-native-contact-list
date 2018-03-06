@@ -7,6 +7,8 @@ import Login from '../components/Login';
 import ChatList from '../components/ChatList';
 import UserProfile from '../components/UserProfile';
 import UserCreate from '../components/UserCreate';
+import UserEdit from '../components/UserEdit';
+
 
 const navigator = StackNavigator(
   // put all the different screens here
@@ -18,9 +20,10 @@ const navigator = StackNavigator(
     ChatList: { screen: ChatList },
     UserProfile: { screen: UserProfile },
     UserCreate: { screen: UserCreate },
+    UserEdit: { screen: UserEdit },
   },
   {
-    initialRouteName: 'Home',
+    // initialRouteName: 'Home',
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#555'
