@@ -1,31 +1,19 @@
 import React, { Component } from 'react';
-import {
-  // View,
-  // Text,
-  // StyleSheet,
-} from 'react-native';
 import { connect } from 'react-redux';
 import { Spinner } from './common';
-import {
-  navigateToHome,
-  navigateToLogin,
-} from '../actions';
+import { navigateWithResetTo } from '../actions';
 
 class AppEntry extends Component {
-  static navigationOptions = {
-    title: 'AppEntry'
-  }
+  static navigationOptions = { title: 'AppEntry' };
 
   componentWillMount() {
     const { timesRun } = this.props;
 
     if (timesRun === 1) {
-      console.log('intro screen');
-      this.props.navigateToHome();
+      this.props.navigateWithResetTo('Home');
       return;
     }
-    console.log('login');
-    this.props.navigateToLogin({ message: 'Log In' });
+    this.props.navigateWithResetTo('Login', { message: 'Log In' });
   }
 
   render() {
@@ -41,6 +29,4 @@ const mapStateToProps = ({ appStats }) => {
   return { timesRun };
 };
 
-export default connect(mapStateToProps, {
-  navigateToHome, navigateToLogin
-})(AppEntry);
+export default connect(mapStateToProps, { navigateWithResetTo })(AppEntry);

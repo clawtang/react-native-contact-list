@@ -8,13 +8,15 @@ import {
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Gravatar } from 'react-native-gravatar';
-import { navigateToUserProfile } from '../actions';
+import { navigateTo } from '../actions';
 
 
 class ListItem extends Component {
   onItemPress() {
-    console.log('uid present?', this.props.user);
-    this.props.navigateToUserProfile(this.props.user);
+    // console.log(this.props.user);
+    // console.log('uid present?', this.props.user);
+    // this.props.navigateTo('UserProfile', { user: this.props.user });
+    this.props.navigation.navigate('UserProfile', { user: this.props.user });
   }
 
   render() {
@@ -34,7 +36,6 @@ class ListItem extends Component {
                 email,
                 parameters: { size: '200', d: 'mm' },
                 secure: true,
-                mask: 'circle'
               }}
               style={styles.gravatar}
             />
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
-    
+
   },
   textContainer: {
     flex: 1,
@@ -79,4 +80,4 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   }
 });
-export default connect(null, { navigateToUserProfile })(ListItem);
+export default connect(null, { navigateTo })(ListItem);

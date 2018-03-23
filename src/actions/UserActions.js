@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import firebase from 'firebase';
+import { NavigationActions } from 'react-navigation';
 import {
   USER_UPDATE,
   USER_CREATE,
@@ -108,5 +109,15 @@ export const userSave = ({ firstName, lastName, username, email, uid }) => {
       .then(() => {
         dispatch({ type: USER_SAVE_SUCCESS });
       });
+  };
+};
+
+export const userDelete = ({ uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/users/${uid}`)
+      .remove()
+      .then(() => dispatch(NavigationActions.pop()));
   };
 };

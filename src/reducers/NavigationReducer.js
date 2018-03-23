@@ -15,7 +15,7 @@ import {
 
 const INITIAL_STATE = AppNavigator.router.getStateForAction(
   //this should be the entry component path
-  AppNavigator.router.getActionForPathAndParams('Dev')
+  AppNavigator.router.getActionForPathAndParams('LoginStack')
 );
 
 export default (state = INITIAL_STATE, action) => {
@@ -73,7 +73,7 @@ export default (state = INITIAL_STATE, action) => {
     case GO_USER_CREATE:
       console.log('go user create called');
       newState = AppNavigator.router.getStateForAction(
-        NavigationActions.navigate({ routeName: 'UserCreate' }),
+        NavigationActions.navigate({ routeName: 'drawerStack' }),
         state
       );
       break;

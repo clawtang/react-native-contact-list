@@ -22,9 +22,15 @@ const Confirm = ({ children, visible, onAccept, onDecline }) => {
           <Text style={textStyle}>{children}</Text>
         </CardSection>
 
-        <CardSection>
-          <Button onPress={onAccept}>Yes</Button>
-          <Button onPress={onDecline}>No</Button>
+        <CardSection style={cardSectionStyle}>
+          <Button
+            onPress={onAccept}
+            containerStyle={{ width: 100 }}
+          >Yes</Button>
+          <Button
+            containerStyle={{ width: 100 }}
+            onPress={onDecline}
+          >No</Button>
         </CardSection>
       </View>
     </Modal>

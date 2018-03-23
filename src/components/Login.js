@@ -10,7 +10,6 @@ import {
   emailChanged,
   passwordChanged,
   loginUser,
-  // navigateToChatList,
 } from '../actions';
 import { LoginForm } from './common';
 
@@ -32,7 +31,6 @@ class Login extends Component {
     const { email, password } = this.props;
 
     this.props.loginUser({ email, password });
-    // this.props.navigateToChatList();
   }
 
   renderError() {
@@ -48,7 +46,6 @@ class Login extends Component {
   }
 
   render() {
-    // console.log('checking props', this.props);
     return (
       <KeyboardAvoidingView
         behavior="padding"
@@ -77,14 +74,11 @@ class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: 'blue',
     justifyContent: 'space-around',
-    // alignItems: 'center',
   },
   text: {
     fontSize: 20,
     textAlign: 'center',
-    // height: 60,
     justifyContent: 'center'
   },
   errorText: {
@@ -104,5 +98,4 @@ export default connect(mapStateToProps, {
   emailChanged,
   passwordChanged,
   loginUser,
-  // navigateToChatList,
 })(Login);

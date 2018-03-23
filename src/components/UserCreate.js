@@ -9,7 +9,8 @@ import UserForm from './UserForm';
 
 class UserCreate extends Component {
   static navigationOptions = {
-    title: 'UserCreate'
+    title: 'Create a new Contact',
+    drawerLabel: 'Create a new Contact'
   }
 
   onButtonPress() {

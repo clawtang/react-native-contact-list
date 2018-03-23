@@ -5,23 +5,20 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import Swiper from 'react-native-swiper';
-// import { NavigationActions } from 'react-navigation';
 import {
   HorizontalScrollPage,
   Button,
 } from './common';
 import {
-  navigateToLogin,
+  navigateWithResetTo
 } from '../actions';
 
 
 class Home extends Component {
-  static navigationOptions = {
-    title: 'Home'
-  }
+  static navigationOptions = { title: 'Home' };
 
   onButtonPress(message) {
-    this.props.navigateToLogin(message);
+    this.props.navigateWithResetTo('Login', message);
   }
 
   onItemTap() {
@@ -102,7 +99,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#555',
     justifyContent: 'center',
     alignItems: 'center',
-    // height: 60,
   },
   buttonText: {
     color: '#eaeaea',
@@ -110,4 +106,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(null, { navigateToLogin })(Home);
+export default connect(null, { navigateWithResetTo })(Home);

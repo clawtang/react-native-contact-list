@@ -17,15 +17,16 @@ import { Spinner } from './common';
 class ChatList extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'ChatList',
-      headerRight: (
-        <Button
-          onPress={() => navigation.dispatch({ type: 'go_user_create' })}
-          title="Add"
-          color="#eaeaea"
-          style={{ marginRight: 10 }}
-        />
-      ),
+      title: 'Contact List',
+      drawerLabel: 'Contact List',
+      // headerRight: (
+      //   <Button
+      //     onPress={() => navigation.dispatch({ type: 'go_user_create' })}
+      //     title="Add"
+      //     color="#eaeaea"
+      //     style={{ marginRight: 10 }}
+      //   />
+      // ),
     };
   };
 

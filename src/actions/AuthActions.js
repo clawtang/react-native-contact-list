@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-// import { NavigationActions, } from 'react-navigation';
+
 import {
   EMAIL_CHANGED,
   PASSWORD_CHANGED,

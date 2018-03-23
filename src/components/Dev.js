@@ -13,8 +13,7 @@ import {
   resetUser,
   resetAuth,
   resetUserForm,
-  skipToChatList,
-  skipToUserCreate,
+  navigateWithResetTo,
   fetchTestUsers,
   clearTestUserData,
 } from '../actions';
@@ -51,7 +50,9 @@ class Dev extends Component {
   }
 
   skipToChatList() {
-    this.props.skipToChatList();
+    // this.props.skipToChatList();
+    // this.props.navigation.navigate('ChatList');
+    this.props.navigateWithResetTo('DrawerStack');
   }
 
   addTestUserData() {
@@ -104,8 +105,7 @@ export default connect(mapStateToProps, {
   resetUser,
   resetAuth,
   resetUserForm,
-  skipToChatList,
-  skipToUserCreate,
+  navigateWithResetTo,
   fetchTestUsers,
   clearTestUserData,
 })(Dev);

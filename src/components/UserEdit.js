@@ -13,16 +13,14 @@ import {
 
 class UserEdit extends Component {
   static navigationOptions = {
-    title: 'UserEdit',
+    title: 'Edit Contact',
   }
   // state = {
   //   showModal: false
   // };
 
   componentWillMount() {
-    // console.log('insie user edit', this.props.navigation.state.params.user);
     _.each(this.props.navigation.state.params.user, (value, prop) => {
-      // console.log('value', value, 'prop', prop);
       this.props.userUpdate({ prop, value });
     });
   }
